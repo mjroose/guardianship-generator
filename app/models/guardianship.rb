@@ -7,7 +7,15 @@ class Guardianship < ApplicationRecord
   enum gu_duration: [ :temporary, :permanent, :temporary_and_permanent ]
   
   def protected_person
-    self.parties.protected_persons.first
+    self.parties.where(party_type: 'Protected Person').first
+  end
+
+  def petitioners
+    self.parties.where(party_type: 'Petitioner')
+  end
+
+  def interested_parties
+    self.parties.where(party_type: 'Interested Party')
   end
 
   def caption

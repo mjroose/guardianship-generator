@@ -10,8 +10,4 @@ class Party < ApplicationRecord
   def middle_initial
     middle_name != '' ? "#{middle_name.first}." : ''
   end
-
-  def self.protected_persons
-    self.where(party_type: 'Protected Person')
-  end
 end
