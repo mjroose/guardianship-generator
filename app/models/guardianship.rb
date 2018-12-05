@@ -6,4 +6,11 @@ class Guardianship < ApplicationRecord
   enum protected_person_type: [ :minor, :adult ]
   enum gu_duration: [ :temporary, :permanent, :temporary_and_permanent ]
   
+  def protected_person
+    self.parties.protected_persons.first
+  end
+
+  def caption
+    "In re: the Guardianship of #{protected_person.name}"
+  end
 end
