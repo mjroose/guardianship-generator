@@ -1,0 +1,7 @@
+<h1>Guardianships</h1>
+
+<ul>
+  <% @guardianships.each do |guardianship| %>
+    <li><%= link_to guardianship.short_caption, guardianship_path(guardianship) %></li>
+  <% end %>
+</ul>

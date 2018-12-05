@@ -13,4 +13,8 @@ class Guardianship < ApplicationRecord
   def caption
     "In re: the Guardianship of #{protected_person.name}"
   end
+
+  def short_caption
+    "Guardianship of #{protected_person.name}"
+  end
 end
