@@ -1,5 +1,7 @@
 <h1><%= @guardianship.short_caption %></h1>
 
+<p><%= @guardianship.description %>
+
 <p><strong>Protected Person:</strong> <%= @guardianship.protected_person.name %></p>
 
 <p><strong>Petitioners:</strong> <%= name_list_for(@guardianship.petitioners) %></p>

@@ -5,5 +5,6 @@ class GuardianshipsController < ApplicationController
 
   def show
     @guardianship = Guardianship.find(params[:id])
+    @descripion = @guardianship.description
   end
 end

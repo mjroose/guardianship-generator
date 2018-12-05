@@ -2,10 +2,14 @@ class Guardianship < ApplicationRecord
   has_many :parties
   has_many :guardianship_institutions
   
-  enum gu_type: [ :individual, :estate, :individual_and_estate ]
-  enum protected_person_type: [ :minor, :adult ]
-  enum gu_duration: [ :temporary, :permanent, :temporary_and_permanent ]
+  enum gu_type: [ "Individual", "Estate", "Individual and Estate" ]
+  enum protected_person_type: [ "Minor", "Incapacitated Adult" ]
+  enum gu_duration: [ "Temporary", "Permanent", "Temporary and Permanent" ]
   
+  def description
+    "#{gu_duration} Guardianship Over the #{gu_type} of #{protected_person_type.with_indefinite_article}"
+  end
+
   def protected_person
     self.parties.where(party_type: 'Protected Person').first
   end
