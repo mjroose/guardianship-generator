@@ -14,4 +14,8 @@ module PartiesHelper
   def name_as_li_link_for(party)
     content_tag :li, link_to(party.name, party_path(party))
   end
+
+  def show_attributes(attribute_keys, attributes)
+    
+  end
 end

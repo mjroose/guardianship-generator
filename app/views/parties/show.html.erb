@@ -1,0 +1,8 @@
+<h1><%= @party.name %></h1>
+
+<h2>Party Information</h2>
+<p>Party Type: <%= @party.party_type %></p>
+
+
+<%= link_to "Edit", edit_party_path(@party) %>
+<%= link_to party_path(@party), method: 'delete' %>
