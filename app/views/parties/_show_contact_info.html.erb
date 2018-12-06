@@ -1,0 +1,27 @@
+<h2>Contact Information</h2>
+
+<p>First Name: <%= party.first_name %></p>
+<p>Middle Name: <%= party.middle_name %></p>
+<p>Last Name: <%= party.last_name %></p>
+<p>Suffix: <%= party.suffix %></p>
+<p><%= %></p>
+<p><%= %></p>
+<p><%= %></p>
+<p><%= %></p>
+<p><%= %></p>
+<p><%= %></p>
+
+<p>Address: <%= party.address %></p>
+
+    <%# guardianship: gu,
+    last_name: Faker::Name.last_name,
+    suffix: Faker::Boolean.boolean(0.9) ? '' : Faker::Name.suffix,
+    date_of_birth: Faker::Date.backward(365 * 80),
+    gender: Faker::Gender.binary_type,
+    race: generate_race,
+    hispanic: Faker::Boolean.boolean(0.2),
+    address: generate_address,
+    home_phone: Faker::PhoneNumber.phone_number,
+    work_phone: Faker::PhoneNumber.phone_number,
+    cell_phone: Faker::PhoneNumber.phone_number,
+    email: Faker::Internet.email %>
