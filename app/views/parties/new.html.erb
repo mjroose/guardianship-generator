@@ -1,2 +1,90 @@
 <h1>New Party</h1>
 
+<%= form_for @party, url: guardianship_parties_path do |p| %>
+  <div class="row">
+    <h2>Name</h2>
+  </div>
+
+  <div class="row form-row">
+    <div class="col-md-3">
+      <%= p.text_field :first_name, placeholder: 'First name' %>
+    </div>
+    <div class="col-md-3">
+      <%= p.text_field :middle_name, placeholder: 'Middle name' %>
+    </div>
+    <div class="col-md-3">
+      <%= p.text_field :last_name, placeholder: 'Last name' %>
+    </div>
+    <div class="col-md-3">
+      <%= p.text_field :suffix, placeholder: 'Suffix' %>
+    </div>
+  </div>
+
+  <div class="row">
+    <h2>Demographics</h2>
+  </div>
+
+  <div class="row form-row">
+    <div class="col-md-4 form-group">
+      <%= p.label :date_of_birth %>
+      <%= p.date_field :date_of_birth %>
+    </div>
+    <div class="col-md-2">
+      <%= p.select :gender, ['Male', 'Female'], {prompt: 'Gender'} %>
+    </div>
+    <div class="col-md-3">
+      <%= p.text_field :race, placeholder: 'Race' %>
+    </div>
+    <div class="col-md-2 form-group">
+      <%= p.label :hispanic, 'Hispanic?' %>
+      <%= p.check_box :hispanic %>
+    </div>
+  </div>
+
+  <div class="row">
+    <h2>Address</h2>
+  </div>
+
+  <div class="row form-row">
+    <div class="col-md-5">
+      <%= p.text_field :street_address_1, placeholder: 'Street Address' %>
+    </div>
+  </div>
+  <div class="row form-row">
+    <div class="col-md-5">
+      <%= p.text_field :street_address_1, placeholder: 'Street Address (line 2)' %>
+    </div>
+  </div>
+  <div class="row form-row">
+    <div class="col-md-3">
+      <%= p.text_field :city, placeholder: 'City' %>
+    </div>
+    <div class="col-md-2">
+      <%= p.select :state, options_for_select(us_states), {prompt: 'State'}%>
+    </div>
+    <div class="col-md-1">
+      <%= p.text_field :zip, placeholder: 'Zip' %>
+    </div>
+  </div>
+
+  <div class="row">
+    <h2>Contact Information</h2>
+  </div>
+
+  <div class="row form-row">
+    <div class="col-md-3">
+      <%= p.phone_field :home_phone, placeholder: 'Home Phone' %>
+    </div>
+    <div class="col-md-3">
+      <%= p.phone_field :work_phone, placeholder: 'Work Phone' %>
+    </div>
+    <div class="col-md-3">
+      <%= p.phone_field :cell_phone, placeholder: 'Cell Phone' %>
+    </div>
+    <div class="col-md-3">
+      <%= p.email_field :email, placeholder: 'Email' %>
+    </div>
+  </div>
+
+  <%= p.submit %>
+<% end %>

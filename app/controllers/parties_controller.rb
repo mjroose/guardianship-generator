@@ -7,6 +7,10 @@ class PartiesController < ApplicationController
 
   def new
     @guardianship = Guardianship.find(params[:guardianship_id])
-    @party = Party.new
+    @party = @guardianship.parties.new
+  end
+
+  def create
+    raise params.inspect
   end
 end

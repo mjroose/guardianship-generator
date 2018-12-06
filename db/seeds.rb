@@ -48,7 +48,11 @@ end
 def fake_guardian_institution(gu)
   GuardianInstitution.create(
     name: Faker::Company.name + Faker::Company.suffix,
-    address: generate_address,
+    street_address_1: Faker::Address.street_address,
+    street_address_2: '',
+    city: Faker::Address.city,
+    state: Faker::Address.state,
+    zip: Faker::Address.zip,
     phone: Faker::PhoneNumber.phone_number,
     fax: Faker::PhoneNumber.phone_number,
     agent_name: Faker::Name.name
@@ -77,16 +81,16 @@ def generate_generic_party_attributes(gu)
     gender: Faker::Gender.binary_type,
     race: generate_race,
     hispanic: Faker::Boolean.boolean(0.2),
-    address: generate_address,
+    street_address_1: Faker::Address.street_address,
+    street_address_2: '',
+    city: Faker::Address.city,
+    state: Faker::Address.state,
+    zip: Faker::Address.zip,
     home_phone: Faker::PhoneNumber.phone_number,
     work_phone: Faker::PhoneNumber.phone_number,
     cell_phone: Faker::PhoneNumber.phone_number,
     email: Faker::Internet.email
   }
-end
-
-def generate_address
-  "#{Faker::Address.street_address}, #{Faker::Address.city}, #{Faker::Address.state_abbr} #{Faker::Address.zip}"
 end
 
 def random_index_for(arr)
