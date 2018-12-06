@@ -12,7 +12,7 @@ module PartiesHelper
   end
 
   def name_as_li_link_for(party)
-    content_tag :li, link_to(party.name, party_path(party))
+    content_tag :li, link_to(party.name, guardianship_party_path(@guardianship, party))
   end
 
   def contact_information_for(party)

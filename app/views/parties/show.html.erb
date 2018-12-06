@@ -4,5 +4,5 @@
 <%= render 'show_contact_info', party: @party %>
 
 
-<%= link_to "Edit", edit_party_path(@party) %>
-<%= link_to party_path(@party), method: 'delete' %>
+<%= link_to 'Edit', edit_guardianship_party_path(@guardianship, @party) %>
+<%= link_to 'Delete', guardianship_party_path(@guardianship, @party), method: 'delete' %>
