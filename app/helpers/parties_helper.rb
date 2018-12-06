@@ -15,59 +15,18 @@ module PartiesHelper
     content_tag :li, link_to(party.name, guardianship_party_path(@guardianship, party))
   end
 
-  def contact_information_for(party)
-    contact_information_attributes = [
-      :first_name,
-      :middle_name,
-      :last_name,
-      :suffix,
-      :address,
-      :home_phone,
-      :work_phone,
-      :cell_phone,
-      :email
-    ]
-
-    display_attributes(party, contact_information_attributes)
-  end
-
-  def physical_descriptors_for(party)
-    physical_descriptors_attributes = [
-      :date_of_birth,
-      :gender,
-      :race,
-      :hispanic
-    ]
-
-    display_attributes(party, physical_descriptors_attributes)
-  end
-
-  def additional_protected_person_descriptors_for(party)
-    additional_descriptors_attributes = [
-      :estimated_value,
-      :eye_color,
-      :hair_color,
-      :height,
-      :weight,
-      :identifying_marks,
-      :gal_name
-    ]
-
-    display_attributes(party, additional_descriptors_attributes)
-  end
-
-  def display_attributes(party, keys)
+  def display_attributes(attributes_obj)
     content_tag :div do
-      keys.each do |key|
-        concat content_tag :p, "#{generate_label_from(key)}: #{format(party[key])}"
+      attributes_obj.attributes.each do |key, value|
+        if is_not_an_id?(key)
+          concat content_tag :p, "#{generate_label_from(key)}: #{format(value)}"
+        end
       end
     end
   end
 
-  def get_values_from(party, keys)
-    keys.collect do |key|
-      party[key]
-    end
+  def is_not_an_id?(key)
+    key != 'id' && !key.include?('_id')
   end
 
   def generate_label_from(key)

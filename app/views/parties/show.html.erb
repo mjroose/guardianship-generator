@@ -1,8 +1,6 @@
 <h1><%= @party.name %></h1>
 
-<h2>Party Information</h2>
 <%= render 'show_contact_info', party: @party %>
-
 
 <%= link_to 'Edit', edit_guardianship_party_path(@guardianship, @party) %>
 <%= link_to 'Delete', guardianship_party_path(@guardianship, @party), method: 'delete' %>

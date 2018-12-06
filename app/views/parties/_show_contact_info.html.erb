@@ -1,13 +1,13 @@
-<h2>Contact Information</h2>
+<h3>Contact Information</h3>
+<%= display_attributes(party.contact_info) %>
 
-<%= contact_information_for(party) %>
+<% if party.demographic_info %>
+  <h3>Demographic Information</h3>
+  <%= display_attributes(party.demographic_info) %>
+<% end %>
 
-<% if party.party_type == 'Protected Person' || party.party_type == 'Petitioner' || party.party_type == 'Guardian' %>
-  <h2>Physical Descriptors</h2>
-  <%= physical_descriptors_for(party) %>
-<% end%>
+<% if party.protected_person_info %>
+  <h3>Additional Information</h3>
+  <%= display_attributes(party.protected_person_info) %>
+<% end %>
 
-<% if party.party_type == 'Protected Person' %>
-  <h2>Additional Physical Descriptors</h2>
-  <%= additional_protected_person_descriptors_for(party) %>
-<% end%>

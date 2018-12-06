@@ -9,11 +9,20 @@ class Party < ApplicationRecord
   accepts_nested_attributes_for :basic_party_info, :contact_info, :demographic_info, :protected_person_info
 
   def name
-    name = [first_name, middle_initial, last_name, suffix].join(' ')
+    name = [
+      basic_party_info.first_name,
+      middle_initial,
+      basic_party_info.last_name, 
+      basic_party_info.suffix].join(' ')
     name.split.join(' ')
   end
 
   def middle_initial
-    middle_name != '' ? "#{middle_name.first}." : ''
+    basic_party_info.middle_name != '' ? "#{basic_party_info.middle_name.first}." : ''
+  end
+
+  def set_party_type_from_params(party_type)
+    valid_party_types = [nil, 'Protected Person', 'Petitioner', 'Guardian', 'Close Relative', 'Interested Party']
+    valid_party_types.include?(party_type) ? party_type : nil
   end
 end
