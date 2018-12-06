@@ -1,11 +1,8 @@
-<h1>New Party</h1>
+<div class="row">
+  <h1>New <%= @party.party_type %></h1>
+</div>
 
 <%= form_for @party, url: guardianship_parties_path do |p| %>
-
-  <div class="row">
-    <%= p.label :party_type %>
-    <%= p.text_field :party_type %>
-  </div>
 
   <%= p.fields_for :basic_party_info, BasicPartyInfo.new do |form_helper_obj| %>
     <div class="row">
@@ -36,7 +33,7 @@
     <div class="row">
       <%= form_helper_obj.text_field :race, placeholder: 'Race' %>
       <%= form_helper_obj.label :hispanic, 'Hispanic?' %>
-      <%= form_helper_obj.check_box :hispanic, checked_value = true, unchecked_value = false %>
+      <%= form_helper_obj.check_box :hispanic %>
     </div>
   <% end %>
 
@@ -115,7 +112,7 @@
 
     <div class="row">
       <%= form_helper_obj.label :interpreter_required, 'Interpreter Required?' %>
-      <%= form_helper_obj.check_box :interpreter_required, checked_value = true, unchecked_value = false %>
+      <%= form_helper_obj.check_box :interpreter_required %>
       <%= form_helper_obj.text_field :language, placeholder: 'Language' %>
     </div>
 

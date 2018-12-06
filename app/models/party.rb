@@ -21,8 +21,11 @@ class Party < ApplicationRecord
     basic_party_info.middle_name != '' ? "#{basic_party_info.middle_name.first}." : ''
   end
 
-  def set_party_type_from_params(party_type)
+  def set_party_type_from_params(party_type_string)
     valid_party_types = [nil, 'Protected Person', 'Petitioner', 'Guardian', 'Close Relative', 'Interested Party']
-    valid_party_types.include?(party_type) ? party_type : nil
+
+    if valid_party_types.include?(party_type_string)
+      self[:party_type] = party_type_string
+    end
   end
 end
