@@ -7,35 +7,20 @@ def fake_guardianship
 end
 
 def fake_protected_person(gu)
-  generic_attributes = generate_generic_party_attributes(gu)
-  specific_attributes = {
-    party_type: 'Protected Person',
-    estimated_value: Faker::Boolean.boolean ? Faker::Number.number(6).to_i : 0,
-    eye_color: generate_eye_color,
-    hair_color: generate_hair_color,
-    height: generate_height,
-    weight: generate_weight,
-    identifying_marks: generate_identifying_marks,
-    gal_name: Faker::Boolean.boolean(0.1) ? Faker::Name.name : nil,
-    relationship_to_protected_person: nil,
-    certified_guardian: false,
-    interpreter_required: false,
-    language: nil,
-    attorney_id: nil
-  }
-  attributes = generic_attributes.merge(specific_attributes)
-  Party.create(attributes)
+  protected_person = Party.create(party_type: 'Protected Person', relationship_to_protected_person: nil)
+  generate_basic_party_info(protected_person)
+  generate_demographic_info(protected_person)
+  generate_contact_info(protected_person)
+  generate_protected_person_info(protected_person)
+  protected_person
 end
 
 def fake_petitioner(gu)
-  generic_attributes = generate_generic_party_attributes(gu)
-  specific_attributes = {
-    party_type: 'Petitioner',
-    relationship_to_protected_person: generate_relationship,
-    attorney: fake_attorney
-  }
-  attributes = generic_attributes.merge(specific_attributes)
-  Party.create(attributes)
+  petitioner = Party.create(party_type: 'Petitioner', relationship_to_protected_person: generate_relationship)
+  generate_basic_party_info(petitioner)
+  generate_demographic_info(petitioner)
+  generate_contact_info(petitioner)
+  petitioner
 end
 
 def fake_attorney
@@ -60,27 +45,36 @@ def fake_guardian_institution(gu)
 end
 
 def fake_interested_party(gu)
-  generic_attributes = generate_generic_party_attributes(gu)
-  specific_attributes = {
-    party_type: 'Interested Party',
-    relationship_to_protected_person: generate_relationship
-  }
-  attributes = generic_attributes.merge(specific_attributes)
-  Party.create(attributes)
+  interested_party = Party.create(party_type: 'Interested Party', relationship_to_protected_person: generate_relationship)
+  generate_basic_party_info(interested_party)
+  generate_demographic_info(interested_party)
+  generate_contact_info(interested_party)
+  interested_party
 end
 
-
-def generate_generic_party_attributes(gu)
-  {
-    guardianship: gu,
-    first_name: Faker::Name.first_name,
-    middle_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name,
-    suffix: Faker::Boolean.boolean(0.9) ? '' : Faker::Name.suffix,
+def generate_demographic_info(party)
+  DemographicInfo.create(
+    party: party,
     date_of_birth: Faker::Date.backward(365 * 80),
     gender: Faker::Gender.binary_type,
     race: generate_race,
-    hispanic: Faker::Boolean.boolean(0.2),
+    hispanic: Faker::Boolean.boolean(0.2)
+  )
+end
+
+def generate_basic_party_info(party)
+  BasicPartyInfo.create(
+    party: party, 
+    first_name: Faker::Name.first_name,
+    middle_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    suffix: Faker::Boolean.boolean(0.9) ? '' : Faker::Name.suffix
+  )
+end
+
+def generate_contact_info(party)
+  ContactInfo.create(
+    party: party,
     street_address_1: Faker::Address.street_address,
     street_address_2: '',
     city: Faker::Address.city,
@@ -90,7 +84,22 @@ def generate_generic_party_attributes(gu)
     work_phone: Faker::PhoneNumber.phone_number,
     cell_phone: Faker::PhoneNumber.phone_number,
     email: Faker::Internet.email
-  }
+  )
+end
+
+def generate_protected_person_info(party)
+  ProtectedPersonInfo.create(
+    party: party,
+    estimated_value: Faker::Boolean.boolean ? Faker::Number.number(6).to_i : 0,
+    eye_color: generate_eye_color,
+    hair_color: generate_hair_color,
+    height: generate_height,
+    weight: generate_weight,
+    identifying_marks: generate_identifying_marks,
+    gal_name: Faker::Boolean.boolean(0.1) ? Faker::Name.name : nil,
+    interpreter_required: false,
+    language: nil
+  )
 end
 
 def random_index_for(arr)
