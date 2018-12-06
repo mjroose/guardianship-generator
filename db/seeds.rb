@@ -90,7 +90,7 @@ def generate_address
 end
 
 def random_index_for(arr)
-  Random.rand(0..arr.size)
+  Random.rand(0..(arr.size - 1))
 end
 
 def generate_race

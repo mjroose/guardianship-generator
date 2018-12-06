@@ -8,7 +8,7 @@ class CreateParty < ActiveRecord::Migration[5.2]
       t.string :last_name
       t.string :suffix
       t.datetime :date_of_birth
-      t.integer :gender
+      t.string :gender
       t.string :race
       t.boolean :hispanic, default: false
       t.string :address

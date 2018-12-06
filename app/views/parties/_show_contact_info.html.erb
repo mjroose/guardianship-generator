@@ -1,27 +1,13 @@
 <h2>Contact Information</h2>
 
-<p>First Name: <%= party.first_name %></p>
-<p>Middle Name: <%= party.middle_name %></p>
-<p>Last Name: <%= party.last_name %></p>
-<p>Suffix: <%= party.suffix %></p>
-<p><%= %></p>
-<p><%= %></p>
-<p><%= %></p>
-<p><%= %></p>
-<p><%= %></p>
-<p><%= %></p>
+<%= contact_information_for(party) %>
 
-<p>Address: <%= party.address %></p>
+<% if party.party_type == 'Protected Person' || party.party_type == 'Petitioner' || party.party_type == 'Guardian' %>
+  <h2>Physical Descriptors</h2>
+  <%= physical_descriptors_for(party) %>
+<% end%>
 
-    <%# guardianship: gu,
-    last_name: Faker::Name.last_name,
-    suffix: Faker::Boolean.boolean(0.9) ? '' : Faker::Name.suffix,
-    date_of_birth: Faker::Date.backward(365 * 80),
-    gender: Faker::Gender.binary_type,
-    race: generate_race,
-    hispanic: Faker::Boolean.boolean(0.2),
-    address: generate_address,
-    home_phone: Faker::PhoneNumber.phone_number,
-    work_phone: Faker::PhoneNumber.phone_number,
-    cell_phone: Faker::PhoneNumber.phone_number,
-    email: Faker::Internet.email %>
+<% if party.party_type == 'Protected Person' %>
+  <h2>Additional Physical Descriptors</h2>
+  <%= additional_protected_person_descriptors_for(party) %>
+<% end%>

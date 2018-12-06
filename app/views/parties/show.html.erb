@@ -1,7 +1,7 @@
 <h1><%= @party.name %></h1>
 
 <h2>Party Information</h2>
-<p>Party Type: <%= @party.party_type %></p>
+<%= render 'show_contact_info', party: @party %>
 
 
 <%= link_to "Edit", edit_party_path(@party) %>
