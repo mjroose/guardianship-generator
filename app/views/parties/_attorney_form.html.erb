@@ -1,4 +1,8 @@
 <div class="row">
-  <%= text_field_tag 'attorney[name]', nil, placeholder: 'Attorney Name' %>
-  <%= text_field_tag 'attorney[bar_number]', nil, placeholder: 'Bar Number' %>
+  <div class="col-md-5">
+    <%= text_field_tag 'attorney[name]', nil, placeholder: 'Attorney Name', class: 'form-control' %>
+  </div>
+  <div class="col-md-5">
+    <%= text_field_tag 'attorney[bar_number]', nil, placeholder: 'Bar Number', class: 'form-control' %>
+  </div>
 </div>

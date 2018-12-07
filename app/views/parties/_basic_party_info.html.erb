@@ -3,21 +3,30 @@
     <h2>Name</h2>
   </div>
   
-  <div class="row">
-    <%= ff.text_field :first_name, placeholder: 'First name' %>
-    <%= ff.text_field :middle_name, placeholder: 'Middle name' %>
-    <%= ff.text_field :last_name, placeholder: 'Last name' %>
-    <%= ff.text_field :suffix, placeholder: 'Suffix' %>
-  </div>
+  <%= form_row(3) do %>
+    <%= ff.text_field :first_name, placeholder: 'First name', class: 'form-control' %>
+  <% end %>
+
+  <%= form_row(3) do %>
+    <%= ff.text_field :middle_name, placeholder: 'Middle name', class: 'form-control' %>
+  <% end %>
+
+  <%= form_row(3) do %>
+    <%= ff.text_field :last_name, placeholder: 'Last name', class: 'form-control' %>
+  <% end %>
+
+  <%= form_row(3) do %>
+    <%= ff.text_field :suffix, placeholder: 'Suffix', class: 'form-control' %>
+  <% end %>
 
   <% if party.party_type == 'Protected Person' || party.party_type == 'Petitioner' %>
     <div class="row">
       <h2>Attorney</h2>
     </div>
 
-    <div class="row">
-      <%= ff.select :attorney_id, Attorney.all.collect {|a| [ a.name, a.id ]}, { prompt: 'Attorney' } %>
-    </div>
+    <%= form_row(3) do %>
+      <%= ff.select :attorney_id, Attorney.all.collect {|a| [ a.name, a.id ]}, { prompt: 'Attorney' }, { class: 'form-control' } %>
+    <% end %>
 
     <%= render 'attorney_form' %>
   <% end %>
