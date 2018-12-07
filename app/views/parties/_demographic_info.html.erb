@@ -4,19 +4,23 @@
   </div>
 
   <% if party.party_type == 'Protected Person' || party.party_type == 'Petitioner' %>
-    <div class="row">
+    <%= form_row(5) do %>
       <%= ff.label :date_of_birth %>
-      <%= ff.date_field :date_of_birth %>
-    </div>
+      <%= ff.date_field :date_of_birth, class: 'form-control' %>
+    <% end %>
   <% end %>
 
-  <div class="row">
-    <%= ff.select :gender, ['Male', 'Female'], {prompt: 'Gender'} %>
-  </div>
+  <%= form_row(2) do %>
+    <%= ff.select :gender, ['Male', 'Female'], { prompt: 'Gender' }, { class: 'form-control' } %>
+  <% end %>
     
   <div class="row">
-    <%= ff.text_field :race, placeholder: 'Race' %>
-    <%= ff.label :hispanic, 'Hispanic?' %>
-    <%= ff.check_box :hispanic %>
+    <div class="col-md-2">
+      <%= ff.text_field :race, placeholder: 'Race', class: 'form-control' %>
+    </div>
+    <div class="col-md-3">
+      <%= ff.label :hispanic, 'Hispanic?' %>
+      <%= ff.check_box :hispanic %>
+    </div>
   </div>
 <% end %>
