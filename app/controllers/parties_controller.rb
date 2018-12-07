@@ -12,12 +12,17 @@ class PartiesController < ApplicationController
   end
 
   def create
-    @guardianship = Guardianship.find(parms[:guardianship_id])
+    @guardianship = Guardianship.find(params[:guardianship_id])
     @party = @guardianship.parties.create(party_params)
-    if @party
-      redirect_to guardian_party_path(@party)
+    @attorney = Attorney.create(attorney_params)
+
+    if @party.persisted?
+      if @attorney.persisted?
+        @party.attorney = @attorney
+      end
+
+      redirect_to guardianship_party_path(@guardianship, @party)
     else
-      raise party_params.inspect
       render 'parties/new'
     end
   end
@@ -64,5 +69,9 @@ class PartiesController < ApplicationController
           :language
         ]
       )
+    end
+
+    def attorney_params
+      params.permit(:attorney).permit(:name, :bar_number)
     end
 end

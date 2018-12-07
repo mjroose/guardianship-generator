@@ -1,0 +1,14 @@
+<%= form_for party, url: guardianship_parties_path do |p| %>
+
+  <%= render 'basic_party_info', { party: party, p: p } %>
+
+  <%= render 'demographic_info', { party: party, p: p } %>
+
+  <%= render 'contact_info', p: p %>
+
+  <% if party.party_type == 'Protected Person' %>
+    <%= render 'protected_person_info', p: p %>
+  <% end %>
+
+  <%= p.submit %>
+<% end %>

@@ -1,0 +1,40 @@
+<%= p.fields_for :protected_person_info, ProtectedPersonInfo.new do |ff| %>
+  <div class="row">
+    <h2>Additional Details</h2>
+  </div>
+
+  <div class="row">
+    <%= ff.text_field :estimated_value, placeholder: 'Estimated Value' %>
+  </div>
+
+  <div class="row">
+    <%= ff.text_field :eye_color, placeholder: 'Eye Color' %>
+  </div>
+
+  <div class="row">
+    <%= ff.text_field :hair_color, placeholder: 'Hair Color' %>
+  </div>
+
+  <div class="row">
+    <%= ff.text_field :height, placeholder: 'Height' %>
+  </div>
+
+  <div class="row">
+    <%= ff.text_field :weight, placeholder: 'Weight' %>
+  </div>
+
+  <div class="row">
+    <%= ff.text_field :identifying_marks, placeholder: 'Scars, Marks, and Tattoos' %>
+  </div>
+
+  <div class="row">
+    <%= ff.text_field :gal_name, placeholder: 'GAL Name' %>
+  </div>
+
+  <div class="row">
+    <%= ff.label :interpreter_required, 'Interpreter Required?' %>
+    <%= ff.check_box :interpreter_required %>
+    <%= ff.text_field :language, placeholder: 'Language' %>
+  </div>
+
+<% end %>
