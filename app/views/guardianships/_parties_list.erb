@@ -1,14 +1,23 @@
 <div>
   <%= parties_heading("Protected Person") %>
   <%= link_list_for([guardianship.protected_person]) %>
+  <%= add_party_link_for(guardianship, "Protected Person") %>
 </div>
 
 <div>
   <%= parties_heading("Petitioners") %>
   <%= link_list_for(guardianship.petitioners) %>
+  <%= add_party_link_for(guardianship, "Petitioner") %>
+</div>
+
+<div>
+  <%= parties_heading("Close Relatives") %>
+  <%= link_list_for(guardianship.interested_parties) %>
+  <%= add_party_link_for(guardianship, "Close Relative") %>
 </div>
 
 <div>
   <%= parties_heading("Interested Parties") %>
   <%= link_list_for(guardianship.interested_parties) %>
+  <%= add_party_link_for(guardianship, "Interested Party") %>
 </div>

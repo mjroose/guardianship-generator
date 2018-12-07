@@ -1,4 +1,12 @@
 module PartiesHelper
+  def add_party_link_for(guardianship, party_type)
+    if party_type == 'Protected Person' && guardianship.try(:protected_person)
+      return ''
+    else
+      link_to "Add #{party_type}", new_guardianship_party_path(guardianship, party_type: party_type)
+    end
+  end
+
   def link_list_for(parties)
     content_tag :ul do
       parties.each do |party|
