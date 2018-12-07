@@ -3,37 +3,43 @@
     <h2>Address</h2>
   </div>
 
-  <div class="row">
-    <%= ff.text_field :street_address_1, placeholder: 'Street Address' %>
-  </div>
+  <%= form_row(5) do %>
+    <%= ff.text_field :street_address_1, placeholder: 'Street Address', class: 'form-control' %>
+  <% end %>
 
-  <div class="row">
-    <%= ff.text_field :street_address_1, placeholder: 'Street Address (line 2)' %>
-  </div>
+  <%= form_row(5) do %>
+    <%= ff.text_field :street_address_1, placeholder: 'Street Address (line 2)', class: 'form-control' %>
+  <% end %>
 
-  <div class="row">
-    <%= ff.text_field :city, placeholder: 'City' %>
-    <%= ff.select :state, options_for_select(us_states), {prompt: 'State'}%>
-    <%= ff.text_field :zip, placeholder: 'Zip' %>
-  </div>
+  <%= form_row(3) do %>
+    <%= ff.text_field :city, placeholder: 'City', class: 'form-control' %>
+  <% end %>
+
+  <%= form_row(2) do %>
+    <%= ff.select :state, options_for_select(us_states), { prompt: 'State' }, { class: 'form-control' } %>
+  <% end %>
+
+  <%= form_row(2) do %>
+    <%= ff.text_field :zip, placeholder: 'Zip', class: 'form-control' %>
+  <% end %>
 
   <div class="row">
     <h2>Contact Information</h2>
   </div>
 
-  <div class="row">
-    <%= ff.phone_field :home_phone, placeholder: 'Home Phone' %>
-  </div>
+  <%= form_row(3) do %>
+    <%= ff.phone_field :home_phone, placeholder: 'Home Phone', class: 'form-control' %>
+  <% end %>
 
-  <div class="row">
-    <%= ff.phone_field :work_phone, placeholder: 'Work Phone' %>
-  </div>
+  <%= form_row(3) do %>
+    <%= ff.phone_field :work_phone, placeholder: 'Work Phone', class: 'form-control' %>
+  <% end %>
 
-  <div class="row">
-    <%= ff.phone_field :cell_phone, placeholder: 'Cell Phone' %>
-  </div>
+  <%= form_row(3) do %>
+    <%= ff.phone_field :cell_phone, placeholder: 'Cell Phone', class: 'form-control' %>
+  <% end %>
 
-  <div class="row">
-    <%= ff.email_field :email, placeholder: 'Email' %>
-  </div>
+  <%= form_row(4) do %>
+    <%= ff.email_field :email, placeholder: 'Email', class: 'form-control' %>
+  <% end %>
 <% end %>
