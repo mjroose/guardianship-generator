@@ -3,6 +3,7 @@ class PartiesController < ApplicationController
   def show
     @guardianship = Guardianship.find(params[:guardianship_id])
     @party = Party.find(params[:id])
+
   end
 
   def new
@@ -14,10 +15,10 @@ class PartiesController < ApplicationController
   def create
     @guardianship = Guardianship.find(params[:guardianship_id])
     @party = @guardianship.parties.create(party_params)
-    @attorney = Attorney.create(attorney_params)
+    @attorney = Attorney.new(attorney_params)
 
     if @party.persisted?
-      if @attorney.persisted?
+      if @attorney.valid?
         @party.attorney = @attorney
       end
 
@@ -28,8 +29,34 @@ class PartiesController < ApplicationController
   end
 
   def edit
+
     @guardianship = Guardianship.find(params[:guardianship_id])
     @party = Party.find(params[:id])
+  end
+
+  def update
+    @guardianship = Guardianship.find(params[:guardianship_id])
+    @party = Party.find(params[:id])
+    @attorney = Attorney.new(attorney_params)
+
+    if @party.try(:persisted?)
+      if @attorney.valid?
+        @party.attorney = @attorney
+      end
+
+      @party.update(party_params)
+
+      redirect_to guardianship_party_path(@guardianship, @party)
+    else
+      render 'parties/new'
+    end
+  end
+
+  def destroy
+    @guardianship = Guardianship.find(params[:guardianship_id])
+    @party = Party.find(params[:id])
+    @party.destroy
+    redirect_to guardianship_path(@guardianship)
   end
 
   private

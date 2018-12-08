@@ -2,4 +2,4 @@
   <h1><%= @party.name %></h1>
 </div>
 
-<%= render 'form', party: @party %>
+<%= render 'form', { guardianship: @guardianship, party: @party } %>

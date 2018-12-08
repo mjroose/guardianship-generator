@@ -1,12 +1,11 @@
 class Party < ApplicationRecord
   belongs_to :guardianship
-  belongs_to :attorney, optional: true
-  has_one :basic_party_info
-  has_one :contact_info
-  has_one :demographic_info
-  has_one :protected_person_info
+  has_one :basic_party_info, :dependent => :destroy
+  has_one :contact_info, :dependent => :destroy
+  has_one :demographic_info, :dependent => :destroy
+  has_one :protected_person_info, :dependent => :destroy
 
-  accepts_nested_attributes_for :basic_party_info, :contact_info, :demographic_info, :protected_person_info
+  accepts_nested_attributes_for :basic_party_info, :demographic_info, :contact_info, :protected_person_info
 
   def name
     name = [

@@ -1,4 +1,4 @@
-<%= form_for party, url: guardianship_parties_path do |p| %>
+<%= form_for [guardianship, party] do |p| %>
 
   <%= render 'basic_party_info', { party: party, p: p } %>
 
