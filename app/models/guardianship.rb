@@ -31,6 +31,10 @@ class Guardianship < ApplicationRecord
   end
 
   def short_caption
-    "Guardianship of #{protected_person.name}"
+    if self.protected_person
+      "Guardianship of #{protected_person.name}"
+    else
+      "New Guardianship"
+    end
   end
 end
