@@ -1,4 +1,4 @@
-<%= p.fields_for :demographic_info, DemographicInfo.new do |ff| %>
+<%= p.fields_for :demographic_info, party.demographic_info || DemographicInfo.new do |ff| %>
   <div class="row">
     <h2>Demographics</h2>
   </div>

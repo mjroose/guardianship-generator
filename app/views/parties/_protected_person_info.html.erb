@@ -1,4 +1,4 @@
-<%= p.fields_for :protected_person_info, ProtectedPersonInfo.new do |ff| %>
+<%= p.fields_for :protected_person_info, party.protected_person_info || ProtectedPersonInfo.new do |ff| %>
   <div class="row">
     <h2>Additional Details</h2>
   </div>

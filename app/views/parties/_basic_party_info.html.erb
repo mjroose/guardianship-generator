@@ -1,4 +1,4 @@
-<%= p.fields_for :basic_party_info, BasicPartyInfo.new do |ff| %>
+<%= p.fields_for :basic_party_info, party.basic_party_info || BasicPartyInfo.new do |ff| %>
   <div class="row">
     <h2>Name</h2>
   </div>

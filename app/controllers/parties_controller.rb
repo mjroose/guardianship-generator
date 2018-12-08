@@ -27,6 +27,11 @@ class PartiesController < ApplicationController
     end
   end
 
+  def edit
+    @guardianship = Guardianship.find(params[:guardianship_id])
+    @party = Party.find(params[:id])
+  end
+
   private
     def party_params
       params.require(:party).permit(

@@ -4,10 +4,10 @@
 
   <%= render 'demographic_info', { party: party, p: p } %>
 
-  <%= render 'contact_info', p: p %>
+  <%= render 'contact_info', { party: party, p: p } %>
 
   <% if party.party_type == 'Protected Person' %>
-    <%= render 'protected_person_info', p: p %>
+    <%= render 'protected_person_info', { party: party, p: p } %>
   <% end %>
 
   <div class="row">

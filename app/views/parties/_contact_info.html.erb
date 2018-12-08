@@ -1,4 +1,4 @@
-<%= p.fields_for :contact_info, ContactInfo.new do |ff| %>
+<%= p.fields_for :contact_info, party.contact_info || ContactInfo.new do |ff| %>
   <div class="row">
     <h2>Address</h2>
   </div>
