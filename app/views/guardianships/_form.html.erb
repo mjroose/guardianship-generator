@@ -1,0 +1,22 @@
+<%= form_for guardianship do |g| %>
+  <%= form_row(4) do %>
+    <%= g.text_field :case_number, placeholder: "Case Number", class: "form-control" %>
+  <% end %>
+
+  <%= form_row(3) do %>
+    <%= g.select :gu_type, gu_types, { prompt: "Guardianship Type" }, { class: "form-control" } %>
+  <% end %>
+
+  <%= form_row(3) do %>
+    <%= g.select :protected_person_type, protected_person_types, { prompt: "Protected Person Type" }, { class: "form-control" } %>
+  <% end %>
+
+  <%= form_row(3) do %>
+    <%= g.select :gu_duration, gu_durations, { prompt: "Duration" }, { class: "form-control" } %>
+  <% end %>
+
+  <%= form_row(3) do %>
+    <%= g.submit nil, class: "btn btn-primary" %>
+  <% end %>
+  
+<% end %>

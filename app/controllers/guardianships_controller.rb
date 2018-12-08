@@ -21,6 +21,19 @@ class GuardianshipsController < ApplicationController
     end
   end
 
+  def edit
+    @guardianship = Guardianship.find(params[:id])
+  end
+
+  def update
+    @guardianship = Guardianship.find(params[:id])
+    if @guardianship.update(guardianship_params)
+      redirect_to guardianship_path(@guardianship)
+    else
+      render :edit
+    end
+  end
+
   private
     def guardianship_params
       params.require(:guardianship).permit(:case_number, :gu_type, :protected_person_type, :gu_duration)
