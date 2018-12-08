@@ -34,6 +34,12 @@ class GuardianshipsController < ApplicationController
     end
   end
 
+  def destroy
+    @guardianship = Guardianship.find(params[:id])
+    @guardianship.destroy
+    redirect_to guardianships_path
+  end
+
   private
     def guardianship_params
       params.require(:guardianship).permit(:case_number, :gu_type, :protected_person_type, :gu_duration)

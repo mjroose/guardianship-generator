@@ -5,3 +5,7 @@
 <% party_types.each do |party_type| %>
   <%= render 'parties_list', { guardianship: @guardianship, party_type: party_type } %>
 <% end %>
+
+<%= form_row(3) do %>
+  <%= button_to "Delete Guardianship", guardianship_path(@guardianship), method: 'delete', class: "btn btn-danger" %>
+<% end %>
