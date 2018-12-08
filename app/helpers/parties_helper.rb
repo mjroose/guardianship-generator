@@ -3,7 +3,7 @@ module PartiesHelper
     if party_type == 'Protected Person' && guardianship.try(:protected_person)
       return ''
     else
-      link_to("Add #{party_type}", new_guardianship_party_path(guardianship, party_type: party_type), class: 'text-white float-right')
+      link_to("Add", new_guardianship_party_path(guardianship, party_type: party_type), class: 'btn btn-primary btn-sm float-right')
     end
   end
 
@@ -37,7 +37,7 @@ module PartiesHelper
 
   def name_as_li_link_for(party)
     content_tag(:li, class: 'list-group-item') do
-      concat link_to(party.name, guardianship_party_path(@guardianship, party), class: 'align-middle')
+      concat link_to(party.name, guardianship_party_path(@guardianship, party), class: 'text-dark align-middle')
       concat link_to("Delete", guardianship_party_path(@guardianship, party), method: 'delete', class: 'btn btn-light btn-sm float-right')
     end
   end

@@ -1,8 +1,8 @@
 <div class="row">
   <div class="col-md-12">
     <ul class="list-group">
-      <li class="list-group-item bg-primary text-white">
-        <strong><%= party_type %></strong>
+      <li class="list-group-item bg-dark text-white">
+        <strong class="align-middle"><%= party_type %></strong>
         <%= add_party_link_for(guardianship, party_type) %>
       </li>
       <%= link_list_for(guardianship, party_type_to_sym(party_type)) %>
