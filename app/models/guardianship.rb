@@ -18,6 +18,10 @@ class Guardianship < ApplicationRecord
     self.parties.where(party_type: 'Petitioner')
   end
 
+  def close_relatives
+    self.parties.where(party_type: 'Close Relative')
+  end
+
   def interested_parties
     self.parties.where(party_type: 'Interested Party')
   end

@@ -2,4 +2,6 @@
 
 <p><%= @guardianship.description %>
 
-<%= render 'parties_list', guardianship: @guardianship %>
+<% party_types.each do |party_type| %>
+  <%= render 'parties_list', { guardianship: @guardianship, party_type: party_type } %>
+<% end %>
