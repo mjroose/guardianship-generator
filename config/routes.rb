@@ -6,5 +6,8 @@ Rails.application.routes.draw do
     resources :parties
   end
 
+  get 'clio/callback', to: 'clio#callback'
+  get 'clio/log_in', to: 'clio#log_in'
+
   root 'home#index'
 end
