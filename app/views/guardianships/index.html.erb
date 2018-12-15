@@ -1,7 +1,11 @@
-<h1>Guardianships</h1>
+<h1></h1>
 
-<ul>
+<ul class="list-group">
+  <li class="list-group-item bg-dark text-white">
+    <strong class="align-middle">Guardianships</strong>
+    <%= link_to 'New', new_guardianship_path, class: "btn btn-primary btn-sm float-right" %>
+  </li>
   <% @guardianships.each do |guardianship| %>
-    <li><%= link_to guardianship.short_caption, guardianship_path(guardianship) %></li>
+    <%= guardianship_name_as_li_link_for(guardianship) %>
   <% end %>
 </ul>

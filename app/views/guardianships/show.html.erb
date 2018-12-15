@@ -6,6 +6,9 @@
   <%= render 'parties_list', { guardianship: @guardianship, party_type: party_type } %>
 <% end %>
 
-<%= form_row(3) do %>
-  <%= button_to "Delete Guardianship", guardianship_path(@guardianship), method: 'delete', class: "btn btn-danger" %>
-<% end %>
+<div class="row">
+  <div class="btn-group" role="group">
+    <%= link_to "Edit", edit_guardianship_path(@guardianship), class: "btn btn-light" %>
+    <%= link_to "Delete Guardianship", guardianship_path(@guardianship), method: 'delete', class: "btn btn-danger" %>
+  </div>
+</div>

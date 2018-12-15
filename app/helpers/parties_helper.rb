@@ -3,7 +3,10 @@ module PartiesHelper
     if party_type == 'Protected Person' && guardianship.try(:protected_person)
       return ''
     else
-      link_to("Add", new_guardianship_party_path(guardianship, party_type: party_type), class: 'btn btn-primary btn-sm float-right')
+      party_type_array = party_type.split
+      party_type_array[-1] = party_type_array[-1].singularize
+      singular_party_type = party_type_array.join(' ')
+      link_to("Add", new_guardianship_party_path(guardianship, party_type: singular_party_type), class: 'btn btn-primary btn-sm float-right')
     end
   end
 
@@ -43,12 +46,17 @@ module PartiesHelper
   end
 
   def display_attributes(attributes_obj)
-    content_tag :div do
-      attributes_obj.attributes.each do |key, value|
-        if is_not_an_id?(key)
-          concat content_tag :p, "#{generate_label_from(key)}: #{format(value)}"
-        end
+    attributes_obj.attributes.each do |key, value|
+      if is_not_an_id?(key)
+        concat content_tag :li, "#{generate_label_from(key)}: #{format(value)}", class: "list-group-item"
       end
+    end
+    ''
+  end
+
+  def list_heading(heading)
+    content_tag :li, class: "strong list-group-item bg-dark text-white" do
+      content_tag :strong, heading
     end
   end
 

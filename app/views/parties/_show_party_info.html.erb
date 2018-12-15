@@ -1,0 +1,19 @@
+<ul class="list-group">
+  <%= list_heading("Contact Information") %>
+  <%= display_attributes(party.contact_info) %>
+</ul>
+
+<% if party.demographic_info %>
+  <ul class="list-group mt-3">
+    <%= list_heading("Demographic Information") %>
+    <%= display_attributes(party.demographic_info) %>    
+  </ul>
+<% end %>
+
+<% if party.protected_person_info %>
+  <ul class="list-group mt-3">
+    <%= list_heading("Additional Information") %>
+    <%= display_attributes(party.protected_person_info) %>    
+  </ul> 
+<% end %>
+

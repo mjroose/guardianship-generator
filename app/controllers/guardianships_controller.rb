@@ -1,4 +1,6 @@
 class GuardianshipsController < ApplicationController
+  before_action :authenticate_user!
+  
   def index
     @guardianships = Guardianship.all
   end

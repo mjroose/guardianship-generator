@@ -1,5 +1,6 @@
 class PartiesController < ApplicationController
-
+  before_action :authenticate_user!
+  
   def show
     @guardianship = Guardianship.find(params[:guardianship_id])
     @party = Party.find(params[:id])

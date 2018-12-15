@@ -1,6 +1,10 @@
 <h1><%= @party.name %></h1>
 
-<%= render 'show_contact_info', party: @party %>
+<%= render 'show_party_info', party: @party %>
 
-<%= link_to 'Edit', edit_guardianship_party_path(@guardianship, @party) %>
-<%= link_to 'Delete', guardianship_party_path(@guardianship, @party), method: 'delete' %>
+
+<div class="btn-group mt-3" role="group">
+  <%= link_to "Edit", edit_guardianship_party_path(@guardianship, @party), class: "btn btn-light" %>
+  <%= link_to "Delete Party", guardianship_party_path(@guardianship, @party), method: 'delete', class: "btn btn-danger" %>
+</div>
+
