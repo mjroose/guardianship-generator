@@ -12,6 +12,8 @@
 <% end %>
 
 <%= form_for [guardianship, party] do |p| %>
+  
+  <%= p.hidden_field :party_type %>
 
   <%= render 'basic_party_info', { party: party, p: p } %>
 

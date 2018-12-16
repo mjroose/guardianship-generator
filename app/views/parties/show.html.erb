@@ -3,7 +3,7 @@
 <%= render 'show_party_info', party: @party %>
 
 
-<div class="btn-group mt-3" role="group">
+<div class="btn-group my-3" role="group">
   <%= link_to "Edit", edit_guardianship_party_path(@guardianship, @party), class: "btn btn-light" %>
   <%= link_to "Delete Party", guardianship_party_path(@guardianship, @party), method: 'delete', class: "btn btn-danger" %>
 </div>

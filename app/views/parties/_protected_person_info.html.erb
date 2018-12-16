@@ -3,38 +3,47 @@
     <h2>Additional Details</h2>
   </div>
 
-  <div class="row">
-    <%= ff.text_field :estimated_value, placeholder: 'Estimated Value' %>
-  </div>
+  <%= form_row(3) do %>
+    <%= ff.text_field :estimated_value, placeholder: 'Estimated Value', class: 'form-control' %>
+  <% end %>
 
-  <div class="row">
-    <%= ff.text_field :eye_color, placeholder: 'Eye Color' %>
-  </div>
+  <%= form_row(3) do %>
+    <%= ff.text_field :eye_color, placeholder: 'Eye Color', class: 'form-control' %>
+  <% end %>
 
-  <div class="row">
-    <%= ff.text_field :hair_color, placeholder: 'Hair Color' %>
-  </div>
+  <%= form_row(3) do %>
+    <%= ff.text_field :hair_color, placeholder: 'Hair Color', class: 'form-control' %>
+  <% end %>
 
-  <div class="row">
-    <%= ff.text_field :height, placeholder: 'Height' %>
-  </div>
+  <%= form_row(2) do %>
+    <%= ff.text_field :height, placeholder: 'Height', class: 'form-control' %>
+  <% end %>
 
-  <div class="row">
-    <%= ff.text_field :weight, placeholder: 'Weight' %>
-  </div>
+  <%= form_row(2) do %>
+    <%= ff.text_field :weight, placeholder: 'Weight', class: 'form-control' %>
+  <% end %>
 
-  <div class="row">
-    <%= ff.text_field :identifying_marks, placeholder: 'Scars, Marks, and Tattoos' %>
-  </div>
+  <%= form_row(5) do %>
+    <%= ff.text_field :identifying_marks, placeholder: 'Scars, Marks, and Tattoos', class: 'form-control' %>
+  <% end %>
 
-  <div class="row">
-    <%= ff.text_field :gal_name, placeholder: 'GAL Name' %>
-  </div>
+  <%= form_row(3) do %>
+    <%= ff.text_field :gal_name, placeholder: 'GAL Name', class: 'form-control' %>
+  <% end %>
 
-  <div class="row">
-    <%= ff.label :interpreter_required, 'Interpreter Required?' %>
-    <%= ff.check_box :interpreter_required %>
-    <%= ff.text_field :language, placeholder: 'Language' %>
+  <div class="row mb-3">
+    <div class="input-group col-md-3">
+      <div class="input-group-prepend">
+        <div class="input-group-text">
+          <%= ff.check_box :interpreter_required %>
+        </div>
+      </div>
+      <%= ff.label :interpreter_required, "Interpreter Required?", class: "form-control" %>
+    </div>
+
+    <div class="col-md-3">
+      <%= ff.text_field :language, placeholder: 'Language', class: 'form-control' %>
+    </div>
   </div>
 
 <% end %>
