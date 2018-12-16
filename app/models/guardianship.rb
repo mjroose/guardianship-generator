@@ -5,6 +5,10 @@ class Guardianship < ApplicationRecord
   enum gu_type: [ "Individual", "Estate", "Individual and Estate" ]
   enum protected_person_type: [ "Minor", "Incapacitated Adult" ]
   enum gu_duration: [ "Temporary", "Permanent", "Temporary and Permanent" ]
+
+  validates :gu_type, presence: true
+  validates :protected_person_type, presence: true
+  validates :gu_duration, presence: true
   
   def description
     "#{gu_duration} Guardianship Over the #{gu_type} of #{protected_person_type.with_indefinite_article}"

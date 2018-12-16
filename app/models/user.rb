@@ -3,6 +3,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :rememberable, :validatable
+  
+  validates :email, presence: true
 
   def self.find_or_create_by_clio_code(code)
     user_info = Clio.get_user_info_from(code)

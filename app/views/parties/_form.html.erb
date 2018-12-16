@@ -1,3 +1,16 @@
+<% if party.errors.any? %>
+  <div class="alert alert-danger" id="error_explanation">
+    <h2 class="alert-heading"><%= pluralize(party.errors.count, "error") %> prohibited this party from being saved:</h2>
+ 
+    <% party.errors.full_messages.each do |msg| %>
+      <hr>
+      <div>
+        <%= msg %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
 <%= form_for [guardianship, party] do |p| %>
 
   <%= render 'basic_party_info', { party: party, p: p } %>

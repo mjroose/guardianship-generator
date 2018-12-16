@@ -1,3 +1,17 @@
+
+<% if guardianship.errors.any? %>
+  <div class="alert alert-danger" id="error_explanation">
+    <h2 class="alert-heading"><%= pluralize(guardianship.errors.count, "error") %> prohibited this guardianship from being saved:</h2>
+ 
+    <% guardianship.errors.full_messages.each do |msg| %>
+      <hr>
+      <div>
+        <%= msg %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
 <%= form_for guardianship do |g| %>
   <%= form_row(4) do %>
     <%= g.text_field :case_number, placeholder: "Case Number", class: "form-control" %>
